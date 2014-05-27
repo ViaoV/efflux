@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Efflux by ViaoV</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/ViaoV/efflux">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/ViaoV/efflux/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/ViaoV/efflux/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Efflux</h1>
+          <p>Rails gem for displaying live system commands</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/ViaoV">ViaoV</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="efflux" class="anchor" href="#efflux"><span class="octicon octicon-link"></span></a>Efflux</h1>
+
+<p>Efflux displays executes system commands and streams the output live to the browser, using Javascript Events. It has both a serverside rails component to make it easy to setup the command streaming and a javascript/css component for displaying the data retrieved from the socket.</p>
+
+<p>It was created to provide an easy way to display log tails and deployment script outputs in maintenence systems for applications.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Add the efflux gem to your gemfile</p>
+
+<pre><code>  gem 'efflux'
+</code></pre>
+
+<p>To use the client side component add the javascript and css files to your project.</p>
+
+<p>Add the following to your application.js</p>
+
+<pre><code>  //= require efflux
+</code></pre>
+
+<p>Add the following to your application.css</p>
+
+<pre><code>  *= require efflux
+</code></pre>
+
+<h3>
+<a name="controller-actions" class="anchor" href="#controller-actions"><span class="octicon octicon-link"></span></a>Controller Actions</h3>
+
+<p>To stream a command you must add a dedicated controller action for the browser to maintain a connection to. In a controller include the <code>Efflux::Stream</code> module and call <code>stream_cmd</code> from an action inside the controller.</p>
+
+<pre><code>class MyController &lt; ApplicationController
+  include Efflux::Stream
+
+  def stream_command
+    stream_cmd 'ls -la' 
+  end
+end
+</code></pre>
+
+<h3>
+<a name="client-side-implmentation" class="anchor" href="#client-side-implmentation"><span class="octicon octicon-link"></span></a>Client-side implmentation</h3>
+
+<p>Efflux comes with a jQuery plugin to implement the client side functionality. For example:</p>
+
+<p>Given the following html:</p>
+
+<pre><code>&lt;div class=".command-output"&gt;&lt;/div&gt;
+</code></pre>
+
+<p>It could be invoked through javascript like this:</p>
+
+<pre><code>$('.command-output').efflux({
+    url: '/command_stream'
+});
+</code></pre>
+
+<p>The plugin supports the following options:</p>
+
+<ul>
+<li>
+<strong>title</strong> - A title that will display in the header of the window. (<em>optional</em>)</li>
+<li>
+<strong>url</strong> - The url to the streaming action. (<em>required</em>)</li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
