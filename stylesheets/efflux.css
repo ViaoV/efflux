@@ -1,0 +1,75 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+.console-frame {
+    border: 1px solid #999;
+    -moz-box-shadow: 0 0 2px #888;
+    -webkit-box-shadow: 0 0 2px #888;
+    box-shadow: 0 0 2px #888;
+    padding: 5px;
+    padding-top: 0px;
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 5px; }
+.console-frame .console pre {
+    border: none;
+    padding: 0px !important;
+    margin: 0px !important;
+    text-indent: 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 1em;
+    line-height: 1.375em;
+    background: #333;
+    color: #eee;
+    height: 300px;
+
+
+  }
+  .console-frame .console {
+      font-family: "Lucida Console", Monaco, monospace;
+      font-size: 1em;
+      line-height: 1.375em;
+      background: #333;
+      color: #eee;
+      padding: 8px;
+      height: 300px;
+      overflow-x: scroll;
+      word-wrap: break-word;
+      -moz-box-shadow: inset 0 0 5px #161616;
+      -webkit-box-shadow: inset 0 0 5px #161616;
+      box-shadow: inner 0 0 5px #161616; }
+  .console-frame .console .command-finished {
+      border-top: 1px solid #ccc; }
+  .console-frame .console .foreground-green {
+      color: #00ff00; }
+  .console-frame .statusbar {
+      height: 26px;
+      border-bottom: 1px solid #000; }
+  .console-frame .statusbar .title {
+      font-family: 'Open-Sans', sans-serif;
+      text-shadow: white 0px 3px 3px;
+      float: left;
+      font-weight: 200;
+      font-size: 1em;
+      margin-top: 4px;
+      padding-left: 15px;
+      color: #666;
+      font-weight: bold; }
+  .console-frame .statusbar button {
+      float: right;
+      margin-top: 3px;
+      margin-left: 3px;
+      height: 20px;
+      width: 20px;
+      border-radius: 4px;
+      box-shadow: none;
+      border: none;
+      background-color: transparent; }
+  .console-frame .statusbar button.fullscreen {
+      background-image: url("fullscreen.png");
+      background-size: 75% 75%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      cursor: pointer; }
